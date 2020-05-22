@@ -2,12 +2,14 @@ package xeus.builder;
 
 import java.util.GregorianCalendar;
 
+import org.apache.commons.lang3.builder.Builder;
+
 import xeus.model.Person;
 
 /**
  * The builder for the {@link Person} class.
  */
-public class PersonBuilder {
+public class PersonBuilder implements Builder<Person> {
 
     private String firstName;
     private String secondName;
@@ -82,6 +84,7 @@ public class PersonBuilder {
         return new FirstNameProvider(builder);
     }
 
+    @Override
     public Person build() {
         Person person = new Person();
         person.setFirstName(firstName);
