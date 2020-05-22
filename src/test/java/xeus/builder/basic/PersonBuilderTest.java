@@ -1,4 +1,4 @@
-package xeus.builder;
+package xeus.builder.basic;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import xeus.model.Person;
 
-import static xeus.builder.PersonBuilder.newPerson;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static xeus.builder.basic.PersonBuilder.newPerson;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PersonBuilderTest {
@@ -16,13 +16,13 @@ public class PersonBuilderTest {
     @Test
     void shouldCreatePerson() {
         // when
-        Person person = newPerson() //
-                .withFirstName("John") //
-                .withLastName("Connor") //
-                .withDateOfBirth(new GregorianCalendar(1990, Calendar.JANUARY, 1)) //
-                .withSecondName("Mike") //
-                .withAcademicTitle("professor") //
-                .withDateOfDeath(new GregorianCalendar(2010, Calendar.DECEMBER, 31)) //
+        Person person = newPerson()
+                .withRequiredFirstName("John")
+                .withRequiredLastName("Connor")
+                .withRequiredDateOfBirth(new GregorianCalendar(1990, Calendar.JANUARY, 1))
+                .withOptionalSecondName("Mike")
+                .withOptionalAcademicTitle("professor")
+                .withOptionalDateOfDeath(new GregorianCalendar(2010, Calendar.DECEMBER, 31))
                 .build();
 
         // then

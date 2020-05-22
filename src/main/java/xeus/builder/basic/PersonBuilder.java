@@ -1,4 +1,4 @@
-package xeus.builder;
+package xeus.builder.basic;
 
 import java.util.GregorianCalendar;
 
@@ -8,6 +8,8 @@ import xeus.model.Person;
 
 /**
  * The builder for the {@link Person} class.
+ * 
+ * In this approach only the inner classes are used to provide the foolproof mechanism.
  */
 public class PersonBuilder implements Builder<Person> {
 
@@ -26,7 +28,7 @@ public class PersonBuilder implements Builder<Person> {
             this.builder = builder;
         }
 
-        public LastNameProvider withFirstName(String firstName) {
+        public LastNameProvider withRequiredFirstName(String firstName) {
             builder.firstName = firstName;
             return new LastNameProvider(builder);
         }
@@ -40,7 +42,7 @@ public class PersonBuilder implements Builder<Person> {
             this.builder = builder;
         }
 
-        public DateOfBirthProvider withLastName(String lastName) {
+        public DateOfBirthProvider withRequiredLastName(String lastName) {
             builder.lastName = lastName;
             return new DateOfBirthProvider(builder);
         }
@@ -54,23 +56,23 @@ public class PersonBuilder implements Builder<Person> {
             this.builder = builder;
         }
 
-        public PersonBuilder withDateOfBirth(GregorianCalendar dateOfBirth) {
+        public PersonBuilder withRequiredDateOfBirth(GregorianCalendar dateOfBirth) {
             builder.dateOfBirth = dateOfBirth;
             return builder;
         }
     }
 
-    public PersonBuilder withSecondName(String secondName) {
+    public PersonBuilder withOptionalSecondName(String secondName) {
         this.secondName = secondName;
         return this;
     }
 
-    public PersonBuilder withAcademicTitle(String academicTitle) {
+    public PersonBuilder withOptionalAcademicTitle(String academicTitle) {
         this.academicTitle = academicTitle;
         return this;
     }
 
-    public PersonBuilder withDateOfDeath(GregorianCalendar dateOfDeath) {
+    public PersonBuilder withOptionalDateOfDeath(GregorianCalendar dateOfDeath) {
         this.dateOfDeath = dateOfDeath;
         return this;
     }
